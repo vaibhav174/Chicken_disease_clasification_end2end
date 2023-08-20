@@ -1,5 +1,6 @@
 # Chicken_disease_clasification_end2end
-Build an end to end project to classify if the chicken has "Coccidiosis", "New Castle Disease" ,"Salmonella" or is.  
+It is a web application that allows farmers to predict whether the chicken has been infected with "Coccidiosis", "New Castle Disease" ,"Salmonella" or not. These diseases can be very dangerous to chickens health if they are not treated properly. The main objective of this project is to help farmers predict the disease using chicken fecal images in case of absence of medical professionals, strikes or any related uncertainties.
+
 Tools Used --> deep learning libraries, MLOps DVC, Docker, CI/CD, AWS Deployment.  
 Complete dataset Data set --> https://www.kaggle.com/datasets/allandclive/chicken-disease-1
 
