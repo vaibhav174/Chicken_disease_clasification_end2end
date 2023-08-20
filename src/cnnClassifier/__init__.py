@@ -1,7 +1,7 @@
 import os
 import sys
 import logging
-
+# this files define looging functions and config for logging
 logging_str = "[%(asctime)s: %(levelname)s: %(module)s: %(message)s]"
 
 log_dir = "logs"
