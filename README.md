@@ -1,6 +1,6 @@
 # Chicken_disease_clasification_end2end
-Build an end to end project to classify if the chicken has "Coccidiosis", "New Castle Disease" ,"Salmonella" or is.
-Tools Used --> deep learning libraries, MLOps DVC, Docker, CI/CD, AWS Deployment
+Build an end to end project to classify if the chicken has "Coccidiosis", "New Castle Disease" ,"Salmonella" or is.  
+Tools Used --> deep learning libraries, MLOps DVC, Docker, CI/CD, AWS Deployment.  
 Complete dataset Data set --> https://www.kaggle.com/datasets/allandclive/chicken-disease-1
 
 <b>Note:  For the pupose of demonstration this version of the project only classify between Coccidiosis and Healthy and trained on a really smaller version of the original dataset. To re-train the actual model please refer the description below and change the code accordingly</b>
