@@ -1,11 +1,20 @@
 # Chicken_disease_clasification_end2end
-Build an end to end project using DVC, Docker and CI/CD to classify if the chicken shown in image have "Coccidiosis" ,"Healthy", "New Castle Disease" ,"Salmonella".
+Build an end to end project to classify if the chicken has "Coccidiosis", "New Castle Disease" ,"Salmonella" or is.
+Tools Used --> deep learning libraries, MLOps DVC, Docker, CI/CD, AWS Deployment
+Complete dataset Data set --> https://www.kaggle.com/datasets/allandclive/chicken-disease-1
 
-Change data injestion config accordingly
-define the data class accordingly(custom return type of a function using entity)
-constant folder init use to read configs prams. we read it once so can define in init file t read yaml files
-since it it define as box type the vars from config after reading can be be called accordingly
+<b>Note:  For the pupose of demonstration this version of the project only classify between Coccidiosis and Healthy and trained on a really smaller version of the original dataset. To re-train the actual model please refer the description below and change the code accordingly</b>
 
+## Changes for whole dataset
+### ./config/config.yaml
+Contains the necessary configs for each part of the pipeline.  
+<b>Please Change the source data URL in the data ingestion stage to the location of complete dataset zip file on local machine. The current URL is for a smaller version of the dataset hosted on github.</b>
+
+### ./templates/index.html
+modify the html file accordingly to have space for 4 outputs
+
+### ./params.yaml
+Change the number of classes to 4 and other parameters according to your need.
 
 ## Workflows
 
@@ -23,11 +32,9 @@ since it it define as box type the vars from config after reading can be be call
 # How to run?
 ### STEPS:
 
-Clone the repository
+First Clone the repository and do the changes you need to the code according to the dataset
 
-```bash
-https://github.com/entbappy/Chicken-Disease-Classification--Project
-```
+
 ### STEP 01- Create a conda environment after opening the repository
 
 ```bash
@@ -44,7 +51,17 @@ conda activate cnncls
 pip install -r requirements.txt
 ```
 
+### STEP 03- Run the training pipeline 
+```bash
+# cmd run
+python main.py
+```
+```bash
+# dvc run
+dvc repro
+```
 
+### STEP 04- Prediction using flask web application
 ```bash
 # Finally run the following command
 python app.py
@@ -52,7 +69,7 @@ python app.py
 
 Now,
 ```bash
-open up you local host and port
+open up you local host and port  localhost:8080
 ```
 
 
@@ -97,7 +114,7 @@ open up you local host and port
 
 	
 ## 3. Create ECR repo to store/save docker image
-    - Save the URI: 566373416292.dkr.ecr.us-east-1.amazonaws.com/chicken
+    - Save the URI of ECR REPO
 
 	
 ## 4. Create EC2 machine (Ubuntu) 
@@ -138,27 +155,3 @@ open up you local host and port
     ECR_REPOSITORY_NAME = simple-app
 
 
-
-
-# AZURE-CICD-Deployment-with-Github-Actions
-
-## Save pass:
-
-s3cEZKH5yytiVnJ3h+eI3qhhzf9q1vNwEi6+q+WGdd+ACRCZ7JD6
-
-
-## Run from terminal:
-
-docker build -t chickenapp.azurecr.io/chicken:latest .
-
-docker login chickenapp.azurecr.io
-
-docker push chickenapp.azurecr.io/chicken:latest
-
-
-## Deployment Steps:
-
-1. Build the Docker image of the Source Code
-2. Push the Docker image to Container Registry
-3. Launch the Web App Server in Azure 
-4. Pull the Docker image from the container registry to Web App server and run 
